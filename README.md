@@ -19,7 +19,7 @@ mvn test
 * Java 11
 * Maven
 * Mysql
-*Spring boot
+* Spring boot
 
 
 Project running in the port: 9191

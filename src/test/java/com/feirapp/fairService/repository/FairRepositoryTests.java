@@ -3,6 +3,7 @@ package com.feirapp.fairService.repository;
 import com.feirapp.fairService.entity.Fair;
 import com.feirapp.fairService.exceptions.FairException;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,12 +17,19 @@ class FairRepositoryTests {
 
 	@Autowired
 	private FairRepository fairRepository;
+	private Fair fair;
+
+	@BeforeEach
+	void setUp(){
+		fair = new Fair("test", "test", "test", "test", 32.53, 43.43);
+	}
 
 	@Test
 	void shouldSaveAFair() throws FairException {
 
 		//given instantiate
-		Fair fair = new Fair("test", "test", "test", "test", 32.53, 43.43);
+		//I do that in the setUp Method
+
 		//when save a fair
 		Fair fair1 = fairRepository.save(fair);
 		System.out.println(fair1);
@@ -39,7 +47,6 @@ class FairRepositoryTests {
 	void shouldGetAFairById() throws FairException {
 
 		//given save a fair
-		Fair fair = new Fair("test", "test", "test", "test", 32.53, 43.43);
 		Fair fair1 = fairRepository.save(fair);
 		System.out.println(fair1);
 		Assert.notNull(fair1);
@@ -57,7 +64,6 @@ class FairRepositoryTests {
 	void shouldGetAFairByWeekDay() throws FairException {
 
 		//given save a fair
-		Fair fair = new Fair("test", "test", "test", "test", 32.53, 43.43);
 		Fair fair1 = fairRepository.save(fair);
 		System.out.println(fair1);
 		Assert.notNull(fair1);
